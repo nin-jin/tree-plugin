@@ -1,0 +1,43 @@
+<idea-plugin version="2">
+  <id>ru.hyoo.jin.tree</id>
+  <name>Tree syntax highlighter</name>
+  <version>1.0</version>
+  <vendor email="nin-jin@ya.ru" url="http://hyoo.ru">Jin</vendor>
+
+  <description><![CDATA[
+      <a href="http://hyoo.ru/?article=%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D1%82+Tree;author=Nin+Jin">Tree</a> - very simple, readable, compact structural format. Better than xml, json, yaml and other.
+    ]]></description>
+
+  <change-notes><![CDATA[
+      * Added simple highlighting
+  ]]>
+  </change-notes>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Build+Number+Ranges for description -->
+  <idea-version since-build="131"/>
+
+  <!-- please see http://confluence.jetbrains.com/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+       on how to target different products -->
+  <!-- uncomment to enable plugin in all products
+  <depends>com.intellij.modules.lang</depends>
+  -->
+
+  <extensions defaultExtensionNs="com.intellij">
+      <fileTypeFactory implementation="ru.hyoo.jin.tree.fileFactory"/>
+      <lang.parserDefinition language="Tree" implementationClass="ru.hyoo.jin.tree.parserDefinition"/>
+      <lang.syntaxHighlighterFactory key="Tree" implementationClass="ru.hyoo.jin.tree.hlighterFactory"/>
+  </extensions>
+
+  <application-components>
+    <!-- Add your application components here -->
+  </application-components>
+
+  <project-components>
+    <!-- Add your project components here -->
+  </project-components>
+
+  <actions>
+    <!-- Add your actions here -->
+  </actions>
+
+</idea-plugin>

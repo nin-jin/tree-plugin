@@ -1,0 +1,17 @@
+{
+  parserClass="ru.hyoo.jin.tree.parser"
+ 
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+ 
+  psiClassPrefix=""
+  psiImplClassSuffix=""
+  psiPackage="ru.hyoo.jin.tree.psi"
+  psiImplPackage="ru.hyoo.jin.tree.psi.impl"
+ 
+  elementTypeHolderClass="ru.hyoo.jin.tree.psi.types"
+  elementTypeClass="ru.hyoo.jin.tree.psi.element"
+  tokenTypeClass="ru.hyoo.jin.tree.psi.token"
+}
+ 
+FILE ::= ( NODES LF )* NODES?
+private NODES ::= INDENT* ( NAME SPACE* )* ( VALUE_PREFIX VALUE? )?

@@ -1,0 +1,12 @@
+<component name="ArtifactManager">
+  <artifact type="jar" build-on-make="true" name="tree-plugin:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/tree_plugin_jar</output-path>
+    <root id="archive" name="tree-plugin_jar.jar">
+      <element id="module-output" name="tree-plugin" />
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
+        <element id="file-copy" path="$PROJECT_DIR$/META-INF/plugin.xml" />
+      </element>
+    </root>
+  </artifact>
+</component>
