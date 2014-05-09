@@ -5,7 +5,8 @@
   <vendor email="nin-jin@ya.ru" url="http://hyoo.ru">Jin</vendor>
 
   <description><![CDATA[
-      <a href="http://hyoo.ru/?article=%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D1%82+Tree;author=Nin+Jin">Tree</a> - very simple, readable, compact structural format. Better than xml, json, yaml and other.
+      <a href="http://hyoo.ru/?article=%D0%A4%D0%BE%D1%80%D0%BC%D0%B0%D1%82+Tree;author=Nin+Jin">Tree</a> - very simple, readable, compact structural format. Better than xml, json, yaml and other.<br/>
+	  <a href="https://github.com/nin-jin/tree-plugin">souces</a><br/>
     ]]></description>
 
   <change-notes><![CDATA[
