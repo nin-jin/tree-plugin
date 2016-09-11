@@ -10,7 +10,7 @@
  
   elementTypeHolderClass="ru.hyoo.jin.tree.psi.types"
   elementTypeClass="ru.hyoo.jin.tree.psi.element"
-  tokenTypeClass="ru.hyoo.jin.tree.psi.token"
+  tokenTypeClass="ru.hyoo.jin.tree.psi.impl.token"
 }
  
 FILE ::= ( NODES LF )* NODES?

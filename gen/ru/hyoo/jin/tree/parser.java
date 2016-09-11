@@ -3,156 +3,158 @@ package ru.hyoo.jin.tree;
 
 import com.intellij.lang.PsiBuilder;
 import com.intellij.lang.PsiBuilder.Marker;
-import com.intellij.openapi.diagnostic.Logger;
 import static ru.hyoo.jin.tree.psi.types.*;
 import static com.intellij.lang.parser.GeneratedParserUtilBase.*;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.lang.ASTNode;
 import com.intellij.psi.tree.TokenSet;
 import com.intellij.lang.PsiParser;
+import com.intellij.lang.LightPsiParser;
 
 @SuppressWarnings({"SimplifiableIfStatement", "UnusedAssignment"})
-public class parser implements PsiParser {
+public class parser implements PsiParser, LightPsiParser {
 
-  public static final Logger LOG_ = Logger.getInstance("ru.hyoo.jin.tree.parser");
-
-  public ASTNode parse(IElementType root_, PsiBuilder builder_) {
-    boolean result_;
-    builder_ = adapt_builder_(root_, builder_, this, null);
-    Marker marker_ = enter_section_(builder_, 0, _COLLAPSE_, null);
-    result_ = parse_root_(root_, builder_, 0);
-    exit_section_(builder_, 0, marker_, root_, result_, true, TRUE_CONDITION);
-    return builder_.getTreeBuilt();
+  public ASTNode parse(IElementType t, PsiBuilder b) {
+    parseLight(t, b);
+    return b.getTreeBuilt();
   }
 
-  protected boolean parse_root_(final IElementType root_, final PsiBuilder builder_, final int level_) {
-    return FILE(builder_, level_ + 1);
+  public void parseLight(IElementType t, PsiBuilder b) {
+    boolean r;
+    b = adapt_builder_(t, b, this, null);
+    Marker m = enter_section_(b, 0, _COLLAPSE_, null);
+    r = parse_root_(t, b, 0);
+    exit_section_(b, 0, m, t, r, true, TRUE_CONDITION);
+  }
+
+  protected boolean parse_root_(IElementType t, PsiBuilder b, int l) {
+    return FILE(b, l + 1);
   }
 
   /* ********************************************************** */
   // ( NODES LF )* NODES?
-  static boolean FILE(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "FILE")) return false;
-    boolean result_ = false;
-    Marker marker_ = enter_section_(builder_);
-    result_ = FILE_0(builder_, level_ + 1);
-    result_ = result_ && FILE_1(builder_, level_ + 1);
-    exit_section_(builder_, marker_, null, result_);
-    return result_;
+  static boolean FILE(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FILE")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = FILE_0(b, l + 1);
+    r = r && FILE_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   // ( NODES LF )*
-  private static boolean FILE_0(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "FILE_0")) return false;
-    int pos_ = current_position_(builder_);
+  private static boolean FILE_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FILE_0")) return false;
+    int c = current_position_(b);
     while (true) {
-      if (!FILE_0_0(builder_, level_ + 1)) break;
-      if (!empty_element_parsed_guard_(builder_, "FILE_0", pos_)) break;
-      pos_ = current_position_(builder_);
+      if (!FILE_0_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "FILE_0", c)) break;
+      c = current_position_(b);
     }
     return true;
   }
 
   // NODES LF
-  private static boolean FILE_0_0(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "FILE_0_0")) return false;
-    boolean result_ = false;
-    Marker marker_ = enter_section_(builder_);
-    result_ = NODES(builder_, level_ + 1);
-    result_ = result_ && consumeToken(builder_, LF);
-    exit_section_(builder_, marker_, null, result_);
-    return result_;
+  private static boolean FILE_0_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FILE_0_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = NODES(b, l + 1);
+    r = r && consumeToken(b, LF);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   // NODES?
-  private static boolean FILE_1(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "FILE_1")) return false;
-    NODES(builder_, level_ + 1);
+  private static boolean FILE_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "FILE_1")) return false;
+    NODES(b, l + 1);
     return true;
   }
 
   /* ********************************************************** */
   // INDENT* ( NAME SPACE* )* ( VALUE_PREFIX VALUE? )?
-  static boolean NODES(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "NODES")) return false;
-    boolean result_ = false;
-    Marker marker_ = enter_section_(builder_);
-    result_ = NODES_0(builder_, level_ + 1);
-    result_ = result_ && NODES_1(builder_, level_ + 1);
-    result_ = result_ && NODES_2(builder_, level_ + 1);
-    exit_section_(builder_, marker_, null, result_);
-    return result_;
+  static boolean NODES(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NODES")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = NODES_0(b, l + 1);
+    r = r && NODES_1(b, l + 1);
+    r = r && NODES_2(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   // INDENT*
-  private static boolean NODES_0(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "NODES_0")) return false;
-    int pos_ = current_position_(builder_);
+  private static boolean NODES_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NODES_0")) return false;
+    int c = current_position_(b);
     while (true) {
-      if (!consumeToken(builder_, INDENT)) break;
-      if (!empty_element_parsed_guard_(builder_, "NODES_0", pos_)) break;
-      pos_ = current_position_(builder_);
+      if (!consumeToken(b, INDENT)) break;
+      if (!empty_element_parsed_guard_(b, "NODES_0", c)) break;
+      c = current_position_(b);
     }
     return true;
   }
 
   // ( NAME SPACE* )*
-  private static boolean NODES_1(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "NODES_1")) return false;
-    int pos_ = current_position_(builder_);
+  private static boolean NODES_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NODES_1")) return false;
+    int c = current_position_(b);
     while (true) {
-      if (!NODES_1_0(builder_, level_ + 1)) break;
-      if (!empty_element_parsed_guard_(builder_, "NODES_1", pos_)) break;
-      pos_ = current_position_(builder_);
+      if (!NODES_1_0(b, l + 1)) break;
+      if (!empty_element_parsed_guard_(b, "NODES_1", c)) break;
+      c = current_position_(b);
     }
     return true;
   }
 
   // NAME SPACE*
-  private static boolean NODES_1_0(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "NODES_1_0")) return false;
-    boolean result_ = false;
-    Marker marker_ = enter_section_(builder_);
-    result_ = consumeToken(builder_, NAME);
-    result_ = result_ && NODES_1_0_1(builder_, level_ + 1);
-    exit_section_(builder_, marker_, null, result_);
-    return result_;
+  private static boolean NODES_1_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NODES_1_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, NAME);
+    r = r && NODES_1_0_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   // SPACE*
-  private static boolean NODES_1_0_1(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "NODES_1_0_1")) return false;
-    int pos_ = current_position_(builder_);
+  private static boolean NODES_1_0_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NODES_1_0_1")) return false;
+    int c = current_position_(b);
     while (true) {
-      if (!consumeToken(builder_, SPACE)) break;
-      if (!empty_element_parsed_guard_(builder_, "NODES_1_0_1", pos_)) break;
-      pos_ = current_position_(builder_);
+      if (!consumeToken(b, SPACE)) break;
+      if (!empty_element_parsed_guard_(b, "NODES_1_0_1", c)) break;
+      c = current_position_(b);
     }
     return true;
   }
 
   // ( VALUE_PREFIX VALUE? )?
-  private static boolean NODES_2(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "NODES_2")) return false;
-    NODES_2_0(builder_, level_ + 1);
+  private static boolean NODES_2(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NODES_2")) return false;
+    NODES_2_0(b, l + 1);
     return true;
   }
 
   // VALUE_PREFIX VALUE?
-  private static boolean NODES_2_0(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "NODES_2_0")) return false;
-    boolean result_ = false;
-    Marker marker_ = enter_section_(builder_);
-    result_ = consumeToken(builder_, VALUE_PREFIX);
-    result_ = result_ && NODES_2_0_1(builder_, level_ + 1);
-    exit_section_(builder_, marker_, null, result_);
-    return result_;
+  private static boolean NODES_2_0(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NODES_2_0")) return false;
+    boolean r;
+    Marker m = enter_section_(b);
+    r = consumeToken(b, VALUE_PREFIX);
+    r = r && NODES_2_0_1(b, l + 1);
+    exit_section_(b, m, null, r);
+    return r;
   }
 
   // VALUE?
-  private static boolean NODES_2_0_1(PsiBuilder builder_, int level_) {
-    if (!recursion_guard_(builder_, level_, "NODES_2_0_1")) return false;
-    consumeToken(builder_, VALUE);
+  private static boolean NODES_2_0_1(PsiBuilder b, int l) {
+    if (!recursion_guard_(b, l, "NODES_2_0_1")) return false;
+    consumeToken(b, VALUE);
     return true;
   }
 

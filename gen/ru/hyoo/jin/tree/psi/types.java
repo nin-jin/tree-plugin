@@ -4,6 +4,7 @@ package ru.hyoo.jin.tree.psi;
 import com.intellij.psi.tree.IElementType;
 import com.intellij.psi.PsiElement;
 import com.intellij.lang.ASTNode;
+import ru.hyoo.jin.tree.psi.impl.*;
 
 public interface types {
 

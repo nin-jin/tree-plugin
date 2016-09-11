@@ -1,4 +1,4 @@
-package ru.hyoo.jin.tree.psi;
+package ru.hyoo.jin.tree.psi.impl;
 
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.openapi.fileTypes.FileType;

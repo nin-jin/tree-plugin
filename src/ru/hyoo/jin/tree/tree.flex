@@ -18,9 +18,9 @@ import com.intellij.psi.TokenType;
 
 LF= [\n]
 INDENT= [\t]
-VALUE_PREFIX= [=]
+VALUE_PREFIX= [\\]
 SPACE= [ ]
-NAME= [^= \n\r\t]
+NAME= [^\\ \n\r\t]
 VALUE= [^\n]
 
 %state STREAMING

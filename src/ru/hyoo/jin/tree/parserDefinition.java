@@ -13,8 +13,7 @@ import com.intellij.psi.PsiFile;
 import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IFileElementType;
 import com.intellij.psi.tree.TokenSet;
-import ru.hyoo.jin.tree.parser;
-import ru.hyoo.jin.tree.psi.file;
+import ru.hyoo.jin.tree.psi.impl.file;
 import ru.hyoo.jin.tree.psi.types;
 import org.jetbrains.annotations.NotNull;
 

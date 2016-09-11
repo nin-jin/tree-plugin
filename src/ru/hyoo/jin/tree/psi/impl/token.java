@@ -1,4 +1,4 @@
-package ru.hyoo.jin.tree.psi;
+package ru.hyoo.jin.tree.psi.impl;
 
 import com.intellij.psi.tree.IElementType;
 import ru.hyoo.jin.tree.lang;
